@@ -1,0 +1,10 @@
+msgid ""
+msgstr ""
+"Language: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgctxt "Toolbar button for a demo action."
+msgid "Demo Action"
+msgstr "Do Demo Action"
+

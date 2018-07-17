@@ -11,11 +11,14 @@ export default class Demo extends Plugin {
     }
 
     addButton() {
-        this.editor.ui.componentFactory.add( 'demoButton', locale => {
+        const editor = this.editor;
+        const t = editor.t;
+
+        editor.ui.componentFactory.add('demoButton', locale => {
             const view = new ButtonView( locale );
 
             view.set( {
-                label: 'Iconless DemoButton',
+                label: t('Demo Action'),
                 icon: buttonIcon,
                 tooltip: true
             } );
