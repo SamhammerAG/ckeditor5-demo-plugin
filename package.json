@@ -11,7 +11,8 @@
   "dependencies": {
     "@ckeditor/ckeditor5-core": "^10.1.0",
     "@ckeditor/ckeditor5-engine": "^10.1.0",
-    "@ckeditor/ckeditor5-ui": "^10.1.0"
+    "@ckeditor/ckeditor5-ui": "^10.1.0",
+    "awesomplete": "^1.1.2"
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-editor-classic": "^10.0.1",
@@ -36,7 +37,6 @@
   ],
   "scripts": {
     "lint": "eslint --quiet '**/*.js'",
-    "precommit": "lint-staged"
   },
   "lint-staged": {
     "**/*.js": [

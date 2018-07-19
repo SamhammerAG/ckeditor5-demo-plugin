@@ -8,10 +8,14 @@ import KeystrokeHandler from '@ckeditor/ckeditor5-utils/src/keystrokehandler';
 import LabeledInputView from '@ckeditor/ckeditor5-ui/src/labeledinput/labeledinputview';
 import InputTextView from '@ckeditor/ckeditor5-ui/src/inputtext/inputtextview';
 
+import ContainerView from './containerView';
+
 import { createButton, createFocusCycler, registerFocusableViews } from './uiutils';
 
 import checkIcon from '@ckeditor/ckeditor5-core/theme/icons/check.svg';
 import cancelIcon from '@ckeditor/ckeditor5-core/theme/icons/cancel.svg';
+
+import Awesomplete from 'awesomplete';
 
 /**
  * View for the balloon that is visible on clicking a demo html element.
@@ -35,7 +39,9 @@ export default class DemoActionsView extends View {
 
         // The demoactionview emits a event called cancel (see second line)
         this.cancelButtonView = createButton(t('Cancel'), cancelIcon, this.locale, 'ck-button-cancel');
-        this.cancelButtonView.delegate( 'execute' ).to( this, 'cancel' );
+        this.cancelButtonView.delegate('execute').to(this, 'cancel');
+
+        this.containerView = new ContainerView(this.locale);
 
         // Creates the balloon with its sub elements
         this.setTemplate({
@@ -53,7 +59,8 @@ export default class DemoActionsView extends View {
             children: [
                 this.textBoxView,
                 this.saveButtonView,
-                this.cancelButtonView
+                this.cancelButtonView,
+                this.containerView
             ]
         });
     }
@@ -68,9 +75,11 @@ export default class DemoActionsView extends View {
         const childViews = [
             this.textBoxView,
             this.saveButtonView,
-            this.cancelButtonView
+            this.cancelButtonView,
+            this.containerView
         ];
 
+        this.initAutoComplete();
 
         // The two below commands are called this way in every plugin.
         // They ensure that focus is working correctly and that we can handle button clicks
@@ -104,5 +113,12 @@ export default class DemoActionsView extends View {
         labeledInput.inputView.placeholder = 'A demo placeholder';
 
         return labeledInput;
+    }
+
+    initAutoComplete() {
+        var input = document.createElement('input');
+        input.placeholder = 'Autocomplete here';
+        this.containerView.element.appendChild(input);
+        new Awesomplete(input, { list: ['Vuejs', 'Npm', 'Node.js'] });
     }
 }
