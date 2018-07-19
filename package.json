@@ -36,7 +36,7 @@
     "theme"
   ],
   "scripts": {
-    "lint": "eslint --quiet '**/*.js'",
+    "lint": "eslint --quiet '**/*.js'"
   },
   "lint-staged": {
     "**/*.js": [
