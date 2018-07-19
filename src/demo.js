@@ -5,8 +5,8 @@ import DemoUi from './demoui';
 export default class Demo extends Plugin {
 
     static get requires() {
-		return [ DemoUi ];
-	}
+        return [DemoUi];
+    }
 
     static get pluginName() {
         return 'Demo';
