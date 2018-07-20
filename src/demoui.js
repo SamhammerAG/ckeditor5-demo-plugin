@@ -21,6 +21,10 @@ export default class Demo extends Plugin {
 
         this.actionsView = this.createActionsView();
         this.balloon = this.editor.plugins.get(PopUp);
+
+        // This event can be fired by following code:
+        // <button onclick="window.editor.fire('demoEventReverse', 'Click me clicked.')">Click me</button>
+        this.editor.on('demoEventReverse', (event, inputValue) => { console.log('Do something inside plugin: ' + inputValue); });
     }
 
     addButton() {
