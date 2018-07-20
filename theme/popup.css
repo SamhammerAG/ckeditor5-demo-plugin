@@ -1,0 +1,16 @@
+.ck.ck-popup-panel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    visibility: hidden;
+    z-index: calc(var(--ck-z-modal) + 1);
+}
+
+.ck.ck-popup-panel.ck-popup-panel_visible {
+    visibility: visible;
+}

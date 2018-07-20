@@ -1,6 +1,6 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 
-import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextualballoon';
+import PopUp from './popup/popUp';
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 
 import DemoActionsView from './ui/demoactionsview';
@@ -11,7 +11,7 @@ import buttonIcon from './../theme/icons/button.svg';
 export default class Demo extends Plugin {
 
     static get requires() {
-        return [ContextualBalloon];
+        return [PopUp];
     }
 
     init() {
@@ -20,7 +20,7 @@ export default class Demo extends Plugin {
         this.editor.commands.add('demoCommand', new DemoCommand(this.editor));
 
         this.actionsView = this.createActionsView();
-        this.balloon = this.editor.plugins.get(ContextualBalloon);
+        this.balloon = this.editor.plugins.get(PopUp);
     }
 
     addButton() {
