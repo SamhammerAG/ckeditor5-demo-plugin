@@ -19,5 +19,17 @@ export default class DemoCommand extends Command {
         // This event can be handled outside
         // e.g.: editor.on('demoEvent', (event, data) => { console.log('Yeah, the demo event is working: ' + data.inputValue); });
         this.editor.fire('demoEvent', { inputValue })
+
+        // Ckeditor is using an internal data structure: https://docs.ckeditor.com/ckeditor5/latest/framework/guides/architecture/editing-engine.html
+        // If you want to generate a specific tag you just have to set an Attribute and write conversion logic.
+        // See also:
+        // this.editor.conversion.for( 'dataDowncast' )
+        // this.editor.conversion.for('editingDowncast')
+        // this.editor.conversion.for('upcast')
+        this.editor.model.change( writer => {
+            for ( const range of this.editor.model.document.selection.getRanges() ) {
+                writer.setAttribute( 'internalLinkId', inputValue, range );
+            }
+        } );
     }
 }
