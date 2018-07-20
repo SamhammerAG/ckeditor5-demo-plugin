@@ -15,5 +15,9 @@ export default class DemoCommand extends Command {
     // editor.execute('demoCommand', actionsView.textBoxView.inputView.element.value);
     execute(inputValue) {
         console.log('entered text: ' + inputValue);
+
+        // This event can be handled outside
+        // e.g.: editor.on('demoEvent', (event, data) => { console.log('Yeah, the demo event is working: ' + data.inputValue); });
+        this.editor.fire('demoEvent', { inputValue })
     }
 }
